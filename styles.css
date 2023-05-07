@@ -36,10 +36,14 @@
           font-family: PT Mono, monospace;
       }
       a:link {
-          font-size: 24px;
-        text-decoration: none !important;
+        text-decoration: none;
       }
-      a:hover {
+
+      .units:link {
+          font-size: 24px;
+        text-decoration: none;
+      }
+      .units:hover {
         text-decoration:underline;
                 color: #164e1c;
         }
@@ -49,7 +53,6 @@
           top: 60px;
           left: 25px;
       }
-
 
       .row {
           position: relative;
@@ -104,3 +107,17 @@
       .runner-icon {
           color: rgb(53, 27, 147);
       }
+      .coder-details {
+      font-size: 14px;
+      text-align: left;
+      text-decoration: none;
+    }
+
+    .coder-details:hover {
+        color:#145f3a;
+    }
+     .coder {
+    width: 22px;
+    display: inline;
+        line-height: 48px;
+    }
