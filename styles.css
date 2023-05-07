@@ -35,12 +35,21 @@
           line-height: 28px;
           font-family: PT Mono, monospace;
       }
+      a:link {
+          font-size: 24px;
+        text-decoration: none !important;
+      }
+      a:hover {
+        text-decoration:underline;
+                color: #164e1c;
+        }
 
       .container {
           position: relative;
           top: 60px;
-          left: 30px;
+          left: 25px;
       }
+
 
       .row {
           position: relative;
@@ -51,24 +60,18 @@
       .search-engine {
           position: relative;
           top: 20px;
-          left: 36px;
+          left: 40px;
       }
 
       .list-group {
           font-size: 14px;
           width: 200px;
           border: none;
-          position: relative;
+          position:relative;
           top: -140px;
           left: 400px;
       }
 
-      a {
-          font-size: 40px;
-          line-height: 48px;
-          color: #8064e9;
-          text-decoration: none;
-      }
 
       .sun-icon {
           color: rgb(255, 217, 0);
