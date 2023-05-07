@@ -1,0 +1,103 @@
+      body {
+          font-family: 'Exo 2', sans-serif;
+          font-family: 'Poppins', sans-serif;
+          width: 70%;
+      }
+
+      .temp {
+          text-align: light;
+          font-size: 48px;
+          line-height: 48px;
+          color: #272044;
+      }
+
+      .temp:hover {
+          color: #145f3a;
+      }
+
+      h2 {
+          text-align: left;
+          font-weight: 900;
+          font-size: 20px;
+          line-height: 48px;
+          color: #8064e9;
+          padding: 0 0 24px;
+      }
+
+      h2:hover {
+          color: #198850;
+          text-transform: uppercase;
+      }
+
+      p {
+          text-align: left;
+          font-size: 18px;
+          line-height: 28px;
+          font-family: PT Mono, monospace;
+      }
+
+      .container {
+          position: relative;
+          top: 60px;
+          left: 30px;
+      }
+
+      .row {
+          position: relative;
+          top: 0;
+          left: 220px;
+      }
+
+      .search-engine {
+          position: relative;
+          top: 20px;
+          left: 36px;
+      }
+
+      .list-group {
+          font-size: 14px;
+          width: 200px;
+          border: none;
+          position: relative;
+          top: -140px;
+          left: 400px;
+      }
+
+      a {
+          font-size: 40px;
+          line-height: 48px;
+          color: #8064e9;
+          text-decoration: none;
+      }
+
+      .sun-icon {
+          color: rgb(255, 217, 0);
+      }
+
+      .cloud-icon {
+          color: rgb(108, 182, 235);
+      }
+
+      .suncloud-icon {
+          color: rgb(199, 142, 76);
+      }
+
+      .sunrain-icon {
+          color: rgb(8, 100, 100);
+      }
+
+      .bolt-icon {
+          color: rgb(173, 160, 123);
+      }
+
+      .wind-icon {
+          color: rgb(67, 121, 162);
+      }
+
+      .droplet-icon {
+          color: rgb(89, 219, 219);
+      }
+
+      .runner-icon {
+          color: rgb(53, 27, 147);
+      }
