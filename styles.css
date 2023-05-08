@@ -48,12 +48,21 @@
                 color: #164e1c;
         }
 
-      .container {
+      .weather-container {
           position: relative;
           top: 60px;
           left: 25px;
       }
-
+          .weather-app-wrapper {
+              max-width: 800px;
+              margin: 30px auto;
+          }
+    
+          .weather-app {
+              padding: 20px;
+              border: 1px solid #dadde1;
+              border-radius: 5px;
+          }
       .row {
           position: relative;
           top: 0;
@@ -115,6 +124,7 @@
 
     .coder-details:hover {
         color:#145f3a;
+        
     }
      .coder {
     width: 22px;
