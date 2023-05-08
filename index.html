@@ -71,11 +71,13 @@
     <div class="weather-container">
               <h1 id="current-temp">
         <i class="fa-sharp fa-solid fa-sun sun-icon"></i> 15
-        <span class="units">
-            <a href="#" id="celcius">°C</a>
-            |
-            <a href="#" id="fahrenheit">°F</a>
-        </span>
+                <div class="float-left">
+                  <strong id="temperature"></strong
+                  ><span class="units"
+                    ><a href="#" id="celsius-link" class="active">°C</a> |
+                    <a href="#" id="fahrenheit-link">°F</a></span
+                  >
+                </div>
       </h1>
       <h2 id="city">Brugge</h2>
       <p id="date">Sunday 15:40</p>
@@ -87,7 +89,7 @@
         <i class="fa-solid fa-wind wind-icon"></i>
       </div>
     </div>
-    
+
     <div class="row">
       <div class="col-3" id="humidity">
         Humidity
