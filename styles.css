@@ -73,14 +73,20 @@
           top: 20px;
           left: 40px;
       }
+      .row {
+        position: relative;
+        top: 60px;
+        left: 20px;
+      }
 
       .list-group {
           font-size: 14px;
           width: 200px;
           border: none;
-          position:relative;
+          position: relative;
           top: -140px;
-          left: 400px;
+          left: 200px;
+
       }
 
 
