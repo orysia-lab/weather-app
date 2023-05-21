@@ -48,7 +48,7 @@
                 color: #164e1c;
         }
 
-      .container {
+      .weather-container {
           position: relative;
           top: 60px;
           left: 25px;
@@ -92,6 +92,10 @@
           left: 200px;
 
       }
+
+        .weather-forecast-date {}
+
+        .weather-forecast-temperature {}
 
 
       .sun-icon {
