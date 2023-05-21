@@ -31,12 +31,11 @@
     <title>Weather</title>
   </head>
   <body>
+
     <div class="container">
-            <div class="weather-app-wrapper">
+      <div class="weather-app-wrapper">
         <div class="weather-app">
-    <div class="search-engine">
-    <div class="city">
- <form id="search-form" class="mb-3">
+          <form id="search-form" class="mb-3">
             <div class="row">
               <div class="col-6">
                 <input
@@ -47,72 +46,54 @@
                   autocomplete="off"
                 />
               </div>
-              <div class="col-2" id="current-location">
+              <div class="col-2">
                 <input
                   type="submit"
                   value="Search"
                   class="btn btn-primary w-100"
                 />
               </div>
-
-                <div class="col-2">
-                 <input 
-                 type="submit"
+              <div class="col-2">
+                <input
+                  type="submit"
                   value="My🌐"
                   class="btn btn-success w-100"
                 />
-
-        </div>
-         </div>
-
+              </div>
+            </div>
           </form>
-
-
-    <div class="weather-container">
-              <h1>
-                        <div class="float-left">
-
-                <span class="sun-icon"
-        <i class="fa-sharp fa-solid fa-sun sun-icon"></i>
-              </span>
-          <span  id="current-temp">15</span>        
-                  <strong id="temperature"></strong>
-                  <span class="units"
-                    ><a href="#" id="celsius-link" class="active">°C</a> |
-                    <a href="#" id="fahrenheit-link">°F</a></span>
+          <div class="overview">
+            <h1 id="city">Brugge</h1>
+            <ul>
+              <li>Last updated: <span id="date"></span></li>
+              <li id="description">Clear</li>
+            </ul>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="clearfix weather-temperature">
+                <img src="" alt="Clear" id="icon" class="float-left" />
+                <div class="float-left">
+                  <strong id="temperature"></strong
+                  ><span class="units"> °C</span>
                 </div>
-      </h1>
-      <h2 id="city">Brugge</h2>
-                          <span class ="temperature-description"> Sunny </span>
-
-
-      <p id="date">Sunday 15:40</p>
-    </div>
-    <div class="row">
-      <div class="col-3" id = "wind">
-        Wind
-        <br />
-        <i class="fa-solid fa-wind wind-icon"></i>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-3" id="humidity">
-        Humidity
-        
-        <i class="fa-solid fa-droplet droplet-icon"></i>
-      </div>
-    </div>
-      <div class="weather-forecast" id="forecast"></div>
-    </div>
-     /<div>
-      </div>
-    <div class="coder-details">
+              </div>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li>Wind <i class="fa-solid fa-wind wind-icon"> </i><span id="wind"></span>km/h</li>
+                <li>Humidity  <i class="fa-solid fa-droplet droplet-icon"></i> <span id="humidity"></span>%</li>
+              </ul>
+            </div>
+          </div>
+          <div class="weather-forecast" id="forecast"></div>
+        </div>
+    <footer class="coder-details">
         <a href="https://github.com/orysia-lab/weather-app.git" target="_blank"> Open-source code </a> <span> by <a href="https://www.shecodes.io/graduates/71755-iryna-drobot" target="_blank">Ira Drobot</a>
         <img class="coder"
         src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/068/178/original/woman-programmer-working-on-development-5683364-4734817.png?1676759751 target="_blank"
         alt="Ira Drobot" /> </span>
-    </div>
+        </footer>
    
     <script src="index.js"></script>
   </body>
