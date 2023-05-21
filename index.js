@@ -34,6 +34,46 @@ function showWeather(response) {
   changeCity.innerHTML = response.data.name;
 }
 
+function displayForecast(response) {
+  let forecast = response.data.daily;
+
+  let forecastElement = document.querySelector("#weather-forecast");
+
+  let forecastHTML = `<div class="container text-center">`;
+  forecastHTML = forecastHTML + `<div class="row">`;
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
+      <div class="col-sm-12 col-md-4 col-lg-2">
+        <div class="day-card">
+          <h5>${formatDay(forecastDay.dt)}</h5>
+          <img src="img/${forecastDay.weather[0].icon}.png" alt="Weather" />
+          <p>
+            <span class="weather-forecast-temperature-max">${Math.round(forecastDay.temp.max)}°C  </span>
+            <span class="weather-forecast-temperature-min">${Math.round(forecastDay.temp.min)}°C</span>
+          </p>
+        </div>
+      </div>
+      `;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+//
+
 function search(city){
   let apiKey = "02c067fbe0a95f847d98a3fc4fe7414d";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -53,7 +93,6 @@ function currentPosition(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(showWeather);
 }
-cityForm.addEventListener("submit", searchCity);
 
 function handlePosition(event) {
   event.preventDefault()
@@ -62,6 +101,7 @@ function handlePosition(event) {
 
 let currentButton = document.querySelector("#current-location");
 currentButton.addEventListener("click", handlePosition);
+
 
 
 function displayFahrenheitTemperature(event) {
