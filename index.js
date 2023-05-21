@@ -23,78 +23,70 @@ if (minutes < 10) {
 p.innerHTML = `${day}, ${hour}:${minutes}`;
 
 
-function searchAnotherCity(event) {
-  event.preventDefault();
-  let cityElement = document.querySelector("#city");
-  let cityInput = cityForm.querySelector("#city-input");
-  cityElement.innerHTML = cityInput.value;
-  searchAnotherCity(cityInput.value);
-}
-
-let cityForm = document.querySelector("form");
-cityForm.addEventListener("submit", searchAnotherCity);
-
-
-function showWeather(response) {
-  let temperature = Math.round(response.data.main.temp);
-  let showTemp = document.querySelector("#current-temp");
-  showTemp.innerHTML = `${temperature}`;
-  let changeCity = document.querySelector("#city");
-  changeCity.innerHTML = response.data.name;
-}
-
-function searchCity(event) {
-  event.preventDefault();
-  let apiKey = "02c067fbe0a95f847d98a3fc4fe7414d";
-  let city = document.querySelector("#city-input").value;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showWeather);
-}
-
-function currentPosition(position) {
-  let apiKey = "02c067fbe0a95f847d98a3fc4fe7414d";
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
-  let showCurrentPosition = document.querySelector("#latitude-longtitude");
-  showCurrentPosition.innerHTML = `Latitude: ${lat} Longtitude:${lon}`;
-  axios.get(apiUrl).then(showWeather);
-}
-cityForm.addEventListener("submit", searchCity);
-
-
-function handleSubmit(event) {
-  event.preventDefault();
-  let cityInputElement = document.querySelector("#city-input");
-  search(cityInputElement.value);
-}
-
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
+function showTemperature(response) {
+  console.log(response.data.main.temp);
+  let h2 = document.querySelector("h2");
   let temperatureElement = document.querySelector("#temperature");
+  let description = document.querySelector("#temperature-description");
+  let iconElement = document.querySelector("#icon");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
 
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  celsiusTemperature = response.data.main.temp;
+
+  h2.innerHTML = response.data.name;
+  description.innerHTML = response.data.weather[0].description;
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
+  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+  getForecast(response.data.coord);
 }
 
-function displayCelsiusTemperature(event) {
+function search(event) {
   event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  let searchInput = document.querySelector("#city-input");
+  if (searchInput.value) {
+    searchCity(searchInput.value);
+  } else {
+    let h2 = document.querySelector("h2");
+    h2.innerHTML = null;
+    alert("Please type a city");
+  }
+}
+
+searchCity("Brugge");
+
+function searchCity(city) {
+  let apiKey = "02c067fbe0a95f847d98a3fc4fe7414d";
+  let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+  axios.get(apiURL).then(showTemperature);
+}
+
+function retrievePosition(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let apiKey = "02c067fbe0a95f847d98a3fc4fe7414d";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(showTemperature);
+}
+function retrievePosition(event) {
+    event.preventDefault();
+}
+
+function getForecast(coordinates) {
+  let apiKey = "02c067fbe0a95f847d98a3fc4fe7414d";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
-form.addEventListener("submit", handleSubmit);
+form.addEventListener("submit", search);
+navigator.geolocation.getCurrentPosition(retrievePosition);
 
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+let button = document.querySelector("#current-button");
+currentButton.addEventListener("click", retrievePosition);
 
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
-search("Brugge");
