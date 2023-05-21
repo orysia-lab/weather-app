@@ -87,6 +87,6 @@ let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
 navigator.geolocation.getCurrentPosition(retrievePosition);
 
-let button = document.querySelector("#current-button");
+let currentButton = document.querySelector("#current-button");
 currentButton.addEventListener("click", retrievePosition);
 

@@ -73,6 +73,10 @@
           top: 20px;
           left: 40px;
       }
+      .temperature-description {
+        font-size: 20px;
+        color:#0b3922
+      }
       .row {
         position: relative;
         top: 60px;
